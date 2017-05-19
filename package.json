@@ -1,6 +1,6 @@
 {
   "name": "classnames-simple",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A bit simpler utility for conditionally joining classNames together",
   "main": "./es5/index.js",
   "module": "./es5-esm/index.js",
