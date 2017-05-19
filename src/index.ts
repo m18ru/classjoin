@@ -1,40 +1,32 @@
 /**
- * Conditionally join classNames together.
+ * Conditionally join class names together.
  * 
- * Arguments can be string (unconditional class name) or object where keys is a
- * class names, and values is a condition for adding this class name to the
- * list.
- * 
- * @param rest Class names or objects of class names with conditions.
+ * @param withConditions Object where keys is a class names, and values is a
+ *  condition for adding this class name to the list.
+ * @param withoutConditions List of unconditional class names.
  * @returns String with list of class names.
  */
-function classNames( ...rest: Array<ClassNamesList | string> ): string
+function classJoin(
+	withConditions: ClassNamesList,
+	withoutConditions?: string[],
+): string
 {
-	const classes: string[] = [];
+	let classes: string[] = [];
+	const keys = Object.keys( withConditions );
 	
-	for ( const arg of rest )
+	for ( let i = 0, n = keys.length; i < n; i++ )
 	{
-		if ( !arg )
-		{
-			continue;
-		}
+		const key = keys[i];
 		
-		if ( typeof arg === 'string' )
+		if ( withConditions[key] )
 		{
-			classes.push( arg );
+			classes.push( key );
 		}
-		else
-		{
-			const keys = Object.keys( arg );
-			
-			for ( const key of keys )
-			{
-				if ( arg[key] )
-				{
-					classes.push( key );
-				}
-			}
-		}
+	}
+	
+	if ( withoutConditions )
+	{
+		classes = classes.concat( withoutConditions );
 	}
 	
 	return classes.join( ' ' );
@@ -45,13 +37,13 @@ function classNames( ...rest: Array<ClassNamesList | string> ): string
  */
 export interface ClassNamesList
 {
-	[key: string]: boolean | any;
+	[key: string]: boolean | undefined | null;
 }
 
 /**
  * Module.
  */
 export {
-	classNames as default,
+	classJoin as default,
 	// ClassNamesList,
 };
