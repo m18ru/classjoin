@@ -26,7 +26,7 @@ function classJoin(
 	
 	if ( withoutConditions )
 	{
-		classes = classes.concat( withoutConditions );
+		classes = withoutConditions.concat( classes );
 	}
 	
 	return classes.join( ' ' );
