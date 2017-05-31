@@ -5,7 +5,7 @@ A bit simpler utility for conditionally joining classNames together.
 It’s simplified version of `classnames` package. The original package is not
 very lage in size, but it can be a bit simpler. Also, it has no ES-modules
 verison, and TypeScript types should be installed separately. A lot of problems
-for so small and simple package, so I vrite my own in TypeScript.
+for so small and simple package, so I write my own in TypeScript.
 
 There is only two options:
 
@@ -14,7 +14,7 @@ There is only two options:
 * You can specify classes without conditions in array as second argument.
 
 If you want to take classes from several objects, just combine them useing
-`Object.assign` or spread operator and use resulting array.
+`Object.assign` or spread operator and use resulting object.
 
 ## Installation
 
@@ -82,7 +82,7 @@ Package contain `module` property for use with ES2015 module bundlers
 
 ### ES2015 code base
 
-If you don't want to use transplitted to ES5 code, you can use included
+If you don’t want to use transplitted to ES5 code, you can use included
 ES2015 version.
 
 You can directly import this version:
@@ -99,7 +99,7 @@ Or specify alias in Webpack config:
 	resolve: {
 		extensions: ['.ts', '.tsx', '.js'],
 		alias: {
-			"classjoin": 'classjoin/es2015',
+			'classjoin': 'classjoin/es2015',
 		},
 	},
 };
